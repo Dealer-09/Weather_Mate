@@ -30,9 +30,12 @@ class MainActivity : AppCompatActivity() {
         }
         weathertask().execute()
 
-        findViewById<EditText>(R.id.edittext_city).setOnClickListener{
-            city = findViewById<EditText>(R.id.edittext_city).text.toString()
-            weathertask().execute()
+        findViewById<com.google.android.material.button.MaterialButton>(R.id.Changetext_city).setOnClickListener{
+            val input = findViewById<EditText>(R.id.edittext_city).text.toString().trim()
+            if (input.isNotEmpty()) {
+                city = input
+                weathertask().execute()
+            }
         }
 
     }
@@ -76,33 +79,33 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.text_Conditon).text = mainMain
 
                 when(icon){
-                    "01d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.sun__1_)
-                    "01n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.moon)
-                    "02d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.sun_cloud)
-                    "02n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.moon_cloud)
-                    "03d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.cloud)
-                    "03n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.cloud)
-                    "04d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.cloud)
-                    "04n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.cloud)
-                    "09d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.humidity)
-                    "09n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.humidity)
-                    "10d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.humidity)
-                    "10n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.humidity)
-                    "11d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.storm)
-                    "11n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.storm)
-                    "13d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.snow)
-                    "13n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.snow)
-                    "50d" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.mist)
-                    "50n" -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.mist)
-                    else -> findViewById<ImageView>(R.id.imgCondition).setImageResource(R.drawable.sun__1_)
+                    "01d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.sun__1_)
+                    "01n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.moon)
+                    "02d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.sun_cloud)
+                    "02n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.moon_cloud)
+                    "03d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.cloud)
+                    "03n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.cloud)
+                    "04d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.cloud)
+                    "04n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.cloud)
+                    "09d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.humidity)
+                    "09n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.humidity)
+                    "10d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.humidity)
+                    "10n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.humidity)
+                    "11d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.storm)
+                    "11n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.storm)
+                    "13d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.snow)
+                    "13n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.snow)
+                    "50d" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.mist)
+                    "50n" -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.mist)
+                    else -> findViewById<ImageView>(R.id.img_condition).setImageResource(R.drawable.sun__1_)
                 }
                 findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
                 findViewById<RelativeLayout>(R.id.UI_holder).visibility = View.VISIBLE
 
             } catch (e: Exception) {
                 findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
-                findViewById<ProgressBar>(R.id.errorText).visibility = View.VISIBLE
-                findViewById<ProgressBar>(R.id.UI_holder).visibility = View.GONE
+                findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE
+                findViewById<RelativeLayout>(R.id.UI_holder).visibility = View.GONE
             }
 
         }
